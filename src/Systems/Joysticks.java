@@ -12,6 +12,8 @@ public class Joysticks {
 	private static final int joy1_axis_num = 6;//define axis_num
 	private static final int joy2_axis_num = 4;
 	
+	private static boolean[] avaliable = new boolean[2];
+	
 	//define axis
 	public static double lx,ly,rx,ry,lt,rt;//for XBox
 	public static double xa,ya,za,silder;//for 3D Pro
@@ -26,8 +28,10 @@ public class Joysticks {
 	
 	
 	public static void init(){
-		joy1 = new Joystick(joy1_port);
-		joy2 = new Joystick(joy2_port);
+		avaliable[0] = true;
+		avaliable[1] = false;
+		if(avaliable[0]) joy1 = new Joystick(joy1_port);
+		if(avaliable[1]) joy2 = new Joystick(joy2_port);
 		SmartDashboard.putNumber("Joystick error range", 0.01);//default
 	}
 	
@@ -35,59 +39,70 @@ public class Joysticks {
 		error_range = SmartDashboard.getNumber("Joystick error range");
 		
 		fix_error();
+		if(avaliable[0]){
+			lx = joy1_axis[0];
+			ly = joy1_axis[1];
+			lt = joy1_axis[2];
+			rt = joy1_axis[3];
+			rx = joy1_axis[4];
+			ry = joy1_axis[5];
+		}
 		
-		lx = joy1_axis[0];
-		ly = joy1_axis[1];
-		lt = joy1_axis[2];
-		rt = joy1_axis[3];
-		rx = joy1_axis[4];
-		ry = joy1_axis[5];
+		if(avaliable[1]){
+			xa = joy2_axis[0];
+			ya = joy2_axis[1];
+			za = joy2_axis[2];
+			silder = joy2_axis[3];
+		}
 		
-		xa = joy2_axis[0];
-		ya = joy2_axis[1];
-		za = joy2_axis[2];
-		silder = joy2_axis[3];
+		if(avaliable[0]){
+			a = joy1.getRawButton(1);
+			b = joy1.getRawButton(2);
+			x = joy1.getRawButton(3);
+			y = joy1.getRawButton(4);
+			lb = joy1.getRawButton(5);
+			rb = joy1.getRawButton(6);
+			back = joy1.getRawButton(7);
+			start = joy1.getRawButton(8);
+			lab = joy1.getRawButton(9);
+			rab = joy1.getRawButton(10);
+		}
 		
-		a = joy1.getRawButton(1);
-		b = joy1.getRawButton(2);
-		x = joy1.getRawButton(3);
-		y = joy1.getRawButton(4);
-		lb = joy1.getRawButton(5);
-		rb = joy1.getRawButton(6);
-		back = joy1.getRawButton(7);
-		start = joy1.getRawButton(8);
-		lab = joy1.getRawButton(9);
-		rab = joy1.getRawButton(10);
-		
-		for(int i=0;i<12;i++){
-			probutton[i] = joy2.getRawButton(i+1);
+		if(avaliable[1]){
+			for(int i=0;i<12;i++){
+				probutton[i] = joy2.getRawButton(i+1);
+			}
 		}	
 	}
 	
 	private static void fix_error(){
 		//joy1 part
-		for(int i=0;i<joy1_axis_num;i++){
-			if(joy1.getRawAxis(i)<0){
-				if(joy1.getRawAxis(i)>-error_range) joy1_axis[i] = 0;
-				else joy1_axis[i] = joy1.getRawAxis(i);
+		if(avaliable[0]){
+			for(int i=0;i<joy1_axis_num;i++){
+				if(joy1.getRawAxis(i)<0){
+					if(joy1.getRawAxis(i)>-error_range) joy1_axis[i] = 0;
+					else joy1_axis[i] = joy1.getRawAxis(i);
+				}
+				else if(joy1.getRawAxis(i)>0){
+					if(joy1.getRawAxis(i)<error_range) joy1_axis[i] = 0;
+					else joy1_axis[i] = joy1.getRawAxis(i);
+				}
+				else joy1_axis[i] = 0;
 			}
-			else if(joy1.getRawAxis(i)>0){
-				if(joy1.getRawAxis(i)<error_range) joy1_axis[i] = 0;
-				else joy1_axis[i] = joy1.getRawAxis(i);
-			}
-			else joy1_axis[i] = 0;
 		}
 		//joy2 part
-		for(int i=0;i<joy2_axis_num;i++){
-			if(joy2.getRawAxis(i)<0){
-				if(joy2.getRawAxis(i)>-error_range) joy2_axis[i] = 0;
-				else joy2_axis[i] = joy2.getRawAxis(i);
+		if(avaliable[1]){
+			for(int i=0;i<joy2_axis_num;i++){
+				if(joy2.getRawAxis(i)<0){
+					if(joy2.getRawAxis(i)>-error_range) joy2_axis[i] = 0;
+					else joy2_axis[i] = joy2.getRawAxis(i);
+				}
+				else if(joy2.getRawAxis(i)>0){
+					if(joy2.getRawAxis(i)<error_range) joy2_axis[i] = 0;
+					else joy2_axis[i] = joy2.getRawAxis(i);
+				}
+				else joy2_axis[i] = 0;
 			}
-			else if(joy2.getRawAxis(i)>0){
-				if(joy2.getRawAxis(i)<error_range) joy2_axis[i] = 0;
-				else joy2_axis[i] = joy2.getRawAxis(i);
-			}
-			else joy2_axis[i] = 0;
 		}
 	}
 }
