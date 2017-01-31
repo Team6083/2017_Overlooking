@@ -13,6 +13,12 @@ public class DriveBase {
     
     private static double speed_dawn = 4;
     
+    private static int control_mode;
+    /** Prevent robot interrupted by data from different control mode
+     * 0 for tankDrive mode
+     * 1 for input_control mode
+     */
+    
     public static void init(){
         left = new Spark(left_port);
         right = new Spark(right_port);
@@ -20,6 +26,7 @@ public class DriveBase {
     }
     
     public static void tankDrive(){
+    	control_mode = 0;
     	left_speed = -Joysticks.ly/speed_dawn;
     	right_speed = Joysticks.ry/speed_dawn;
     	
@@ -30,6 +37,17 @@ public class DriveBase {
     	right.set(right_speed);
     	
     	dashboard();
+    }
+    
+    public static void input_control(){
+    	control_mode = 1;
+    }
+    
+    public static void input(double temp_left,double temp_right){
+    	if(control_mode == 1){
+        	left_speed = temp_left;
+        	right_speed = temp_right;
+    	}
     }
     
     private static void dashboard(){
