@@ -1,11 +1,11 @@
 package org.usfirst.frc.team6083.robot;
 
+import Systems.Joysticks;
+import Systems.DriveBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import Systems.Joysticks;
-import Systems.DriveBase;
 
 /**
  * The VM is configured to automatically run this class, and to call the
