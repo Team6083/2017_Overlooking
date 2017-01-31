@@ -31,7 +31,7 @@ public class DriveBase {
     	right_speed = Joysticks.ry/speed_dawn;
     	
     	if(Joysticks.lab) left_speed = left_speed*2;
-    	if(Joysticks.rab) right_speed = right_speed*2;
+    	if(Joysticks.rab) right_speed = right_speed*2;//boost
     	
     	left.set(left_speed);
     	right.set(right_speed);
@@ -41,6 +41,9 @@ public class DriveBase {
     
     public static void input_control(){
     	control_mode = 1;
+    	
+    	left.set(left_speed);
+    	right.set(right_speed);
     }
     
     public static void input(double temp_left,double temp_right){
