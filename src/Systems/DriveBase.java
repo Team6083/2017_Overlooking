@@ -44,6 +44,7 @@ public class DriveBase {
     	
     	left.set(left_speed);
     	right.set(right_speed);
+    	dashboard();
     }
     
     public static void input(double temp_left,double temp_right){

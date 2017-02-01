@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import Systems.DriveBase;
 
 public class gyro_control {
-    static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-    static double angle=0,x=0.01,curr=0;
-    static double error_range=3,max_speed=0.25,toangle=0;
+    private static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
+    private static double angle=0,x=0.01,curr=0;
+    private static double error_range=3,max_speed=0.25;
     
-    public static double left_speed=0,right_speed=0;
+    public static double left_speed=0,right_speed=0,toangle=0;
     
     private static final String reset_msg = "Rotation System Reset Complete!!";
     private static final String startup_msg = "Rotation System Enabled!!";
@@ -36,22 +36,19 @@ public class gyro_control {
         SmartDashboard.putString("Status", startup_msg);
     }
     
-    public static void rotate(double to){
-    	toangle = to;
+    public static void rotate(){
     	error_range = SmartDashboard.getNumber("error_range");
     	max_speed = SmartDashboard.getNumber("max_speed");
     	toangle = curr + toangle;
-    	if(loop(toangle)){
+    	loop(toangle);
+    	if(isTargetangle){
     		toangle = 0;
-    		isTargetangle = true;
     	}
-    	else isTargetangle = false;
     	curr = toangle;
     }
     
-    private static boolean loop(double to){
+    private static void loop(double to){
     	//left is - right is +
-    	boolean rt = true;
         angle = Gyro.getAngle()-to;
         x = SmartDashboard.getNumber("x");
         if(angle >=360){
@@ -88,11 +85,10 @@ public class gyro_control {
         else{
         	left_speed= 0;
         	right_speed= 0;
-        	rt = false;
+        	isTargetangle = false;
         }
         
         SmartDashboard.putNumber("angle", angle);
-        return rt;
     }
     
     

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import Systems.DriveBase;
 import Systems.Joysticks;
+import Systems.autonomous.autonomous_robot;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
+		autonomous_robot.init();
 	}
 
 	/**
@@ -63,6 +65,7 @@ public class Robot extends IterativeRobot {
 		case defaultAuto:
 		default:
 			// Put default auto code here
+			autonomous_robot.loop();
 			break;
 		}
 	}
