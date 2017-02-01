@@ -6,16 +6,17 @@ import Systems.DriveBase;
 
 public class autonomous_robot {
 	
-	private static boolean first_run = false;
+	private static boolean first_run = true;
 	
 	//init code when robot during autonomous mode
 	public static void init(){
 		gyro_control.init();
+		gyro_control.toangle = 30;
 	}
 	
 	public static void loop(){
 		gyro_control.rotate();
-		if(gyro_control.isTargetangle||first_run){
+		if(gyro_control.isTargetangle){
 			gyro_control.toangle = 30;
 			Timer.delay(5);
 		}

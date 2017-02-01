@@ -86,7 +86,7 @@ public class gyro_control {
         else{
         	left_speed= 0;
         	right_speed= 0;
-        	isTargetangle = false;
+        	isTargetangle = true;
         }
         
         SmartDashboard.putNumber("angle", angle);
