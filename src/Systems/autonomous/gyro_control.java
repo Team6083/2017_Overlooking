@@ -37,6 +37,7 @@ public class gyro_control {
     }
     
     public static void rotate(){
+    	SmartDashboard.putNumber("toangle", toangle);
     	error_range = SmartDashboard.getNumber("error_range");
     	max_speed = SmartDashboard.getNumber("max_speed");
     	toangle = curr + toangle;
