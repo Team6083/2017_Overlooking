@@ -65,7 +65,7 @@ public class Robot extends IterativeRobot {
 		case defaultAuto:
 		default:
 			// Put default auto code here
-			autonomous_robot.loop();
+			autonomous_robot.autonomousPeriodic();
 			break;
 		}
 	}

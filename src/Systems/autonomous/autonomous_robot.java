@@ -7,6 +7,9 @@ import Systems.DriveBase;
 public class autonomous_robot {
 	
 	private static boolean first_run = true;
+
+	private static int []array ={0,30,50,70,90,100};
+	private static int error=0,i=0;
 	
 	//init code when robot during autonomous mode
 	public static void init(){
@@ -23,5 +26,13 @@ public class autonomous_robot {
 		DriveBase.input_control();
 		DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
 		if(first_run) first_run = false;
+	}
+	public static void autonomousPeriodic() {
+			gyro_control.toangle=array[i];
+			if(gyro_control.isTargetangle){
+				Timer.delay(2);
+				gyro_control.toangle=array[i];
+				i++;
+			}
 	}
 }

@@ -10,7 +10,7 @@ public class gyro_control {
     private static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
     private static double angle=0,x=0.01,curr=0;
     private static double error_range=3,max_speed=0.25;
-    
+	
     public static double left_speed=0,right_speed=0,toangle=0;
     
     private static final String reset_msg = "Rotation System Reset Complete!!";
