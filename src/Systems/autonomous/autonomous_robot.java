@@ -8,7 +8,7 @@ public class autonomous_robot {
 	
 	private static boolean first_run = true;
 
-	private static int []array ={0,30,50,70,90,100};
+	private static int []toangle ={0,30,20,-10,90,-100};
 	private static int error=0,i=0;
 	
 	//init code when robot during autonomous mode
@@ -28,10 +28,10 @@ public class autonomous_robot {
 		if(first_run) first_run = false;
 	}
 	public static void autonomousPeriodic() {
-			gyro_control.toangle=array[i];
+			gyro_control.rotate();
 			if(gyro_control.isTargetangle){
+				gyro_control.toangle=toangle[i];
 				Timer.delay(2);
-				gyro_control.toangle=array[i];
 				i++;
 			}
 	}
