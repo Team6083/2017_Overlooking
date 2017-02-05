@@ -1,15 +1,17 @@
 package Systems;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class DriveBase {
-    private static Spark left,right;
+	private static VictorSP left1,left2,right1,right2;
     private static double left_speed,right_speed;
     
-    private static final int left_port = 0;
-    private static final int right_port = 1;
+    private static final int left1_port = 0;
+    private static final int left2_port = 1;
+    private static final int right1_port = 2;
+    private static final int right2_port = 3;
     
     private static double speed_dawn = 4;
     
@@ -20,8 +22,10 @@ public class DriveBase {
      */
     
     public static void init(){
-        left = new Spark(left_port);
-        right = new Spark(right_port);
+    	left1 = new VictorSP(left1_port);
+    	left2 = new VictorSP(left2_port);
+    	right1 = new VictorSP(right1_port);
+    	right2 = new VictorSP(right2_port);
         SmartDashboard.putNumber("Drive speed dawn vlaue", speed_dawn);
     }
     
@@ -33,8 +37,10 @@ public class DriveBase {
     	if(Joysticks.lab) left_speed = left_speed*2;
     	if(Joysticks.rab) right_speed = right_speed*2;//boost
     	
-    	left.set(left_speed);
-    	right.set(right_speed);
+    	left1.set(left_speed);
+    	left2.set(left_speed);
+    	right1.set(right_speed);
+    	right2.set(right_speed);
     	
     	dashboard();
     }
@@ -42,8 +48,10 @@ public class DriveBase {
     public static void input_control(){
     	control_mode = 1;
     	
-    	left.set(left_speed);
-    	right.set(right_speed);
+    	left1.set(left_speed);
+    	left2.set(left_speed);
+    	right1.set(right_speed);
+    	right2.set(right_speed);
     	dashboard();
     }
     
@@ -55,7 +63,7 @@ public class DriveBase {
     }
     
     private static void dashboard(){
-    	SmartDashboard.putNumber("left_drive", left.get());
-    	SmartDashboard.putNumber("right_drive", right.get());
+    	SmartDashboard.putNumber("left_drive", left1.get());
+    	SmartDashboard.putNumber("right_drive", right1.get());
     }
 }
