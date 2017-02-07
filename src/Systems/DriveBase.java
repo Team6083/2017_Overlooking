@@ -8,10 +8,10 @@ public class DriveBase {
     private static VictorSP left1,left2,right1,right2;
     private static double left_speed,right_speed;
     
-    private static final int left1_port = 0;
-    private static final int left2_port = 1;
-    private static final int right1_port = 2;
-    private static final int right2_port = 3;
+    private static final int left1_port = 1;
+    private static final int left2_port = 2;
+    private static final int right1_port = 3;
+    private static final int right2_port = 4;
     
     private static double speed_dawn = 4;
     
