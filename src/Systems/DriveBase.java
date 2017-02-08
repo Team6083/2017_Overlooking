@@ -8,12 +8,12 @@ public class DriveBase {
 	private static VictorSP left1,left2,right1,right2;
     private static double left_speed,right_speed;
     
-    private static final int left1_port = 0;
-    private static final int left2_port = 1;
-    private static final int right1_port = 2;
-    private static final int right2_port = 3;
+    private static final int left1_port = 1;
+    private static final int left2_port = 2;
+    private static final int right1_port = 3;
+    private static final int right2_port = 4;
     
-    private static double speed_dawn = 4;
+    private static double speed_down = 4;
     
     private static int control_mode;
     /** Prevent robot interrupted by data from different control mode
@@ -26,13 +26,13 @@ public class DriveBase {
     	left2 = new VictorSP(left2_port);
     	right1 = new VictorSP(right1_port);
     	right2 = new VictorSP(right2_port);
-        SmartDashboard.putNumber("Drive speed dawn vlaue", speed_dawn);
+        SmartDashboard.putNumber("Drive speed dawn vlaue", speed_down);
     }
     
     public static void tankDrive(){
     	control_mode = 0;
-    	left_speed = -Joysticks.ly/speed_dawn;
-    	right_speed = Joysticks.ry/speed_dawn;
+    	left_speed = -Joysticks.ly/speed_down;
+    	right_speed = Joysticks.ry/speed_down;
     	
     	if(Joysticks.lab) left_speed = left_speed*2;
     	if(Joysticks.rab) right_speed = right_speed*2;//boost
