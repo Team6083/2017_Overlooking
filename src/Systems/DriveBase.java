@@ -13,6 +13,13 @@ public class DriveBase {
     private static final int right1_port = 3;
     private static final int right2_port = 4;
     
+    private static int control_mode = 0;
+    /** Prevent robot interrupted by data from different control mode
+     * 0 for tankDrive mode
+     * 1 for input_control mode
+     * 2 for arcade mode
+     */
+    
     private static double speed_down = 4;
     
     public static void init(){
@@ -21,6 +28,21 @@ public class DriveBase {
     	right1 = new VictorSP(right1_port);
     	right2 = new VictorSP(right2_port);
         SmartDashboard.putNumber("Drive speed dawn vlaue", speed_down);
+    }
+    
+    public static void drivabase_control(){
+    	
+    	switch (control_mode) {
+    	case 1:
+    		
+    		break;
+    	case 2:
+    		arcade();
+    		break;
+    	case 0:
+    	default:
+    		tankDrive();
+    	}
     }
     
     public static void tankDrive(){
@@ -38,15 +60,10 @@ public class DriveBase {
     	dashboard();
     }
     
-    private static void dashboard(){
-    	SmartDashboard.putNumber("left_drive", left1.get());
-    	SmartDashboard.putNumber("right_drive", right1.get());
-    }
-    
     public static void arcade(){
     	
     	right_speed=(-Joysticks.ly+Joysticks.lx)/speed_down;
-    	left_speed=(Joysticks.ly+Joysticks.ly)/4;
+    	left_speed=(Joysticks.ly+Joysticks.ly)/speed_down;
     	
     	if(Joysticks.lab){
     		left_speed=left_speed*2;
@@ -59,4 +76,16 @@ public class DriveBase {
     	SmartDashboard.putNumber("leftmotor", left1.get());
     	SmartDashboard.putNumber("rightmotor", right1.get());
     }
+    
+    
+    
+    private static void dashboard(){
+    	SmartDashboard.putNumber("left_drive", left1.get());
+    	SmartDashboard.putNumber("right_drive", right1.get());
+    }
+    
+    private static void mode_selector(){
+    	
+    }
+    
 }
