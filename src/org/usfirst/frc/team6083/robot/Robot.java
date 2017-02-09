@@ -66,6 +66,7 @@ public class Robot extends IterativeRobot {
 		default:
 			// Put default auto code here
 			autonomous_robot.autonomousPeriodic();
+			DriveBase.input_control();
 			break;
 		}
 	}

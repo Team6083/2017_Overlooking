@@ -2,6 +2,7 @@ package Systems.autonomous;
 
 import Systems.autonomous.gyro_control;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import Systems.DriveBase;
 
 public class autonomous_robot {
@@ -15,9 +16,11 @@ public class autonomous_robot {
 	public static void init(){
 		gyro_control.init();
 		gyro_control.toangle = 30;
+		
+		SmartDashboard.putBoolean("Auto Code Inited", true);
 	}
 	
-	public static void loop(){
+	/*public static void loop(){
 		gyro_control.rotate();
 		if(gyro_control.isTargetangle){
 			gyro_control.toangle = 30;
@@ -26,13 +29,16 @@ public class autonomous_robot {
 		DriveBase.input_control();
 		DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
 		if(first_run) first_run = false;
-	}
+	}*/
 	public static void autonomousPeriodic() {
 			gyro_control.rotate();
-			if(gyro_control.isTargetangle){
+			/*if(gyro_control.isTargetangle){
 				gyro_control.toangle=toangle[i];
-				Timer.delay(2);
+				DriveBase.input(0, 0);
 				i++;
-			}
+				Timer.delay(2);
+			}*/
+			
+			
 	}
 }

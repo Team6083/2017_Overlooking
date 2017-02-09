@@ -60,6 +60,7 @@ public class DriveBase {
         	left_speed = temp_left;
         	right_speed = temp_right;
     	}
+    	input_control();
     }
     
     private static void dashboard(){
