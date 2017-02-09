@@ -27,8 +27,8 @@ public class DriveBase {
     	left_speed = -Joysticks.ly/speed_down;
     	right_speed = Joysticks.ry/speed_down;
     	
-    	if(Joysticks.lab) left_speed = left_speed*2;
-    	if(Joysticks.rab) right_speed = right_speed*2;
+    	if(Joysticks.lb) left_speed = left_speed*2;
+    	if(Joysticks.rb) right_speed = right_speed*2;
     	
     	left1.set(left_speed);
     	left2.set(left_speed);
@@ -47,24 +47,16 @@ public class DriveBase {
     	
     	right_speed=(-Joysticks.ly+Joysticks.lx)/speed_down;
     	left_speed=(Joysticks.ly+Joysticks.ly)/4;
-    	 /* if(Joysticks.lb){
-    			ballmotor.set(ballspeed);
-    	  }else if(Joysticks.rb){
-    			ballmotor.set(-ballspeed);
-    	  }else{
-    		  ballmotor.set(0);		
-    	  }*/
     	
-    if(Joysticks.lab){
-    	left_speed=left_speed*2;
-    right_speed=right_speed*2;
-    }
-	left1.set(left_speed);
-	left2.set(left_speed);
-	right1.set(right_speed);
-	right2.set(right_speed);
-//	SmartDashboard.putNumber("ballmotor", ballmotor.get());
-	SmartDashboard.putNumber("leftmotor", left1.get());
-	SmartDashboard.putNumber("rightmotor", right1.get());
+    	if(Joysticks.lab){
+    		left_speed=left_speed*2;
+    		right_speed=right_speed*2;
+    	}
+    	left1.set(left_speed);
+    	left2.set(left_speed);
+    	right1.set(right_speed);
+    	right2.set(right_speed);
+    	SmartDashboard.putNumber("leftmotor", left1.get());
+    	SmartDashboard.putNumber("rightmotor", right1.get());
     }
 }
