@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6083.robot;
 
 import Systems.Joysticks;
+import Systems.ballAssembly;
 import Systems.DriveBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
 		DriveBase.init();
+		ballAssembly.init();
 	}
 
 	/**
@@ -75,6 +77,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Joysticks.update_data();
 		DriveBase.tankDrive();
+		ballAssembly.teleop();
 	}
 
 	/**
