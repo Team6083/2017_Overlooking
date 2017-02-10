@@ -71,12 +71,15 @@ public class gyro_control {
         	error_angle=-error_angle;
         }//make the error angle not exceed 360
         
+        error_angle=error_angle-to;
         if(error_angle > 180){
         	error_angle=error_angle-360;
-        }else if(error_angle < -180){
+        }
+        else if(error_angle < -180){
         	error_angle=error_angle+360;
-        }  //**haven't test
-        error_angle=error_angle-to;
+        }
+        
+        
         
         if(error_angle<=-error_range && error_angle >=-(360-error_range)){
         	if(error_angle*x <=-max_speed){
