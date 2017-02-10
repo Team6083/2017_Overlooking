@@ -25,7 +25,7 @@ public class autonomous_robot {
 		SmartDashboard.putNumber("to", 0);
 	}
 	
-	public static void set_gyro_to(){
+	public static void set_angle_to(){
 		gyro_control.loop(SmartDashboard.getNumber("to"));
 		DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
 		SmartDashboard.putBoolean("isTargetangle", gyro_control.isTargetangle);
