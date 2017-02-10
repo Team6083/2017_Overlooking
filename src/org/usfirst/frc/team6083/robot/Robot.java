@@ -31,6 +31,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
 		DriveBase.init();
+		autonomous_robot.init_robotinit();
 	}
 
 	/**
@@ -65,7 +66,7 @@ public class Robot extends IterativeRobot {
 		case defaultAuto:
 		default:
 			// Put default auto code here
-			autonomous_robot.autonomousPeriodic();
+			autonomous_robot.set_gyro_to();
 			DriveBase.input_control();
 			break;
 		}
