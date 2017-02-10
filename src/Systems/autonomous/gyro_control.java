@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class gyro_control {
     private static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-    private static double error_angle=0,delta_angle=0,x=0.01,curr=0;
-    private static double error_range=5,max_speed=0.25;
+    private static double error_angle=0,delta_angle=0,x=0.01,to=0;
+    private static double error_range=5,max_speed=0.1;
 	
-    public static double left_speed=0,right_speed=0,toangle=0;
+    public static double left_speed=0,right_speed=0;
     
     private static final String reset_msg = "Rotation System Reset Complete!!";
     private static final String startup_msg = "Rotation System Enabled!!";
@@ -17,7 +17,6 @@ public class gyro_control {
     public static boolean isTargetangle = false;
 	
     public static void reset(){
-    	curr = 0;
     	gyro_reset();
         System.out.println(reset_msg);
         SmartDashboard.putString("Status", reset_msg);
@@ -34,22 +33,22 @@ public class gyro_control {
         SmartDashboard.putNumber("x", x);
         SmartDashboard.putNumber("error_range", error_range);
         SmartDashboard.putNumber("max_speed",max_speed);
-        SmartDashboard.putNumber("toangle", toangle);
         System.out.println(startup_msg);
         SmartDashboard.putString("Status", startup_msg);
     }
     
     public static void rotate(){
-    	double temp_toangle = curr + toangle;
-    	loop(toangle);
-    	if(isTargetangle){
-    		toangle = 0;
+    	delta_angle=SmartDashboard.getNumber("delta_angle");
+    	to += delta_angle;
+    	if(delta_angle!=0){
+    		SmartDashboard.putNumber("delta_angle", 0);
+    		delta_angle = 0;
     	}
-    	curr = toangle;
-    	
+    	SmartDashboard.putNumber("to", to);
+    	loop();
     }
     
-    public static void loop(double to){
+    public static void loop(){
     	//left is - right is +
         error_angle = Gyro.getAngle()-to;
         SmartDashboard.putNumber("current angle", Gyro.getAngle());
@@ -75,6 +74,7 @@ public class gyro_control {
         		right_speed = error_angle*x;
         		left_speed = error_angle*x;
         	}
+        	isTargetangle = false;
         }
         else if(error_angle >=error_range && error_angle <=(360-error_range)){
         	if(error_angle*x >= max_speed){
@@ -85,16 +85,18 @@ public class gyro_control {
         		right_speed = error_angle*x;
         		left_speed = error_angle*x;
         	}
+        	isTargetangle = false;
         }
         else{
         	left_speed= 0;
         	right_speed= 0;
         	isTargetangle = true;
         }
-        delta_angle=0;
-    	SmartDashboard.putNumber("delta_angle", delta_angle);
         SmartDashboard.putNumber("error_angle", error_angle);
     }
     
+    public static void set_to(double temp_to){
+    	to = temp_to;
+    }
     
 }
