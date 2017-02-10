@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class gyro_control {
     private static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-    private static double error_angle=0,x=0.01,curr=0;
+    private static double error_angle=0,delta_angle=0,x=0.01,curr=0;
     private static double error_range=5,max_speed=0.25;
 	
     public static double left_speed=0,right_speed=0,toangle=0;
@@ -29,17 +29,18 @@ public class gyro_control {
     }
     
     public static void init(){
+    	SmartDashboard.putNumber("delta_angle", delta_angle);
         SmartDashboard.putNumber("error_angle", error_angle);
         SmartDashboard.putNumber("x", x);
         SmartDashboard.putNumber("error_range", error_range);
         SmartDashboard.putNumber("max_speed",max_speed);
+        SmartDashboard.putNumber("toangle", toangle);
         System.out.println(startup_msg);
         SmartDashboard.putString("Status", startup_msg);
     }
     
     public static void rotate(){
-    	SmartDashboard.putNumber("toangle", toangle);
-    	toangle = curr + toangle;
+    	double temp_toangle = curr + toangle;
     	loop(toangle);
     	if(isTargetangle){
     		toangle = 0;
@@ -90,7 +91,8 @@ public class gyro_control {
         	right_speed= 0;
         	isTargetangle = true;
         }
-        
+        delta_angle=0;
+    	SmartDashboard.putNumber("delta_angle", delta_angle);
         SmartDashboard.putNumber("error_angle", error_angle);
     }
     

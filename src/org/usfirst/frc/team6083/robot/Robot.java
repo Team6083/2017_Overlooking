@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 		case defaultAuto:
 		default:
 			// Put default auto code here
-			autonomous_robot.set_gyro_to();
+			autonomous_robot.autonomousPeriodic();
 			DriveBase.input_control();
 			break;
 		}
