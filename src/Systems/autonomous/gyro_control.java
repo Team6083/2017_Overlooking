@@ -50,7 +50,14 @@ public class gyro_control {
     
     public static void loop(){
     	//left is - right is +
-        error_angle = Gyro.getAngle()-to;
+    	if(to >= 360){
+    		to=to%360;
+    	}else if(to <=-360){
+    		to=-to;
+    		to=to%360;
+    		to=-to;
+    	}
+        error_angle = Gyro.getAngle();
         SmartDashboard.putNumber("current angle", Gyro.getAngle());
         error_range = SmartDashboard.getNumber("error_range");
         max_speed = SmartDashboard.getNumber("max_speed");
@@ -63,12 +70,12 @@ public class gyro_control {
         	error_angle=error_angle%360;
         	error_angle=-error_angle;
         }//make the error angle not exceed 360
-        
+        error_angle=error_angle-to;
         
         if(error_angle<=-error_range && error_angle >=-(360-error_range)){
         	if(error_angle*x <=-max_speed){
-        		right_speed = -max_speed;//-  turn right
-        		left_speed = -max_speed;
+        		right_speed = max_speed;//+  turn right
+        		left_speed = max_speed;
         	}//limit the speed
         	else{
         		right_speed = error_angle*x;
@@ -78,8 +85,8 @@ public class gyro_control {
         }
         else if(error_angle >=error_range && error_angle <=(360-error_range)){
         	if(error_angle*x >= max_speed){
-        		left_speed = max_speed;
-        		right_speed = max_speed;
+        		left_speed = -max_speed;
+        		right_speed = -max_speed;
         	}//limit the speed
         	else{
         		right_speed = error_angle*x;
