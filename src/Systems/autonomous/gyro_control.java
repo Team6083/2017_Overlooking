@@ -50,6 +50,13 @@ public class gyro_control {
     
     public static void loop(){
     	//left is - right is +
+    	if(to >= 360){
+    		to=to%360;
+    	}else if(to <=-360){
+    		to=-to;
+    		to=to%360;
+    		to=-to;
+    	}
         error_angle = Gyro.getAngle();
         SmartDashboard.putNumber("current angle", Gyro.getAngle());
         error_range = SmartDashboard.getNumber("error_range");
