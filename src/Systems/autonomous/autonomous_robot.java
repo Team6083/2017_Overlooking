@@ -32,6 +32,10 @@ public class autonomous_robot {
 		SmartDashboard.putBoolean("isTargetangle", gyro_control.isTargetangle);
 	}
 	
+	public static void autoRotate(){
+		
+	}
+	
 	
 	public static void autonomousPeriodic() {
 			gyro_control.rotate();
