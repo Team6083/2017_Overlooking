@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
 		Joysticks.init();
 		DriveBase.init();
 		autonomous_robot.init_robotinit();
+		SmartDashboard.putString("Status","robotInit finished");
 	}
 
 	/**
