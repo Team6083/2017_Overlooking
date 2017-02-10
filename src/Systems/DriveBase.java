@@ -47,6 +47,7 @@ public class DriveBase {
     
     public static void input_control(){
     	control_mode = 1;
+    	SmartDashboard.putString("Control mode", "Input control");
     	
     	left1.set(left_speed);
     	left2.set(left_speed);
