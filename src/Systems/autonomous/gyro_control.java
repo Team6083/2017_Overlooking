@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class gyro_control {
     private static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
-    private static double error_angle=0,delta_angle=0,x=0.01,to=0;
-    private static double error_range=10,max_speed=0.2;
+    private static double error_angle=0,current_angle,delta_angle=0,x=0.01,to=0;
+    private static double error_range=8,max_speed=0.2;
 	
     public static double left_speed=0,right_speed=0;
     
@@ -52,15 +52,14 @@ public class gyro_control {
     	to = to%360;//make the to angle not exceed 360
     	
     	//left is - right is +
-        error_angle = Gyro.getAngle();
+        current_angle = Gyro.getAngle();
         error_range = SmartDashboard.getNumber("error_range");
         max_speed = SmartDashboard.getNumber("max_speed");
         x = SmartDashboard.getNumber("x");
-        SmartDashboard.putNumber("current angle", Gyro.getAngle());
         
-        error_angle = error_angle%360;//make the error angle not exceed 360
-        
-        error_angle = error_angle-to;
+        current_angle = current_angle%360;//make the current angle not exceed 360
+        SmartDashboard.putNumber("current angle", current_angle);
+        error_angle = current_angle-to;
         
         if(error_angle > 180){
         	error_angle = error_angle-360;
@@ -80,7 +79,7 @@ public class gyro_control {
         	}
         	isTargetangle = false;
         }
-        else if(error_angle >=error_range && error_angle <=(360-error_range)){
+        else if(error_angle >= error_range && error_angle <= (360-error_range)){
         	if(error_angle*x >= max_speed){
         		left_speed = -max_speed;
         		right_speed = -max_speed;
@@ -92,8 +91,8 @@ public class gyro_control {
         	isTargetangle = false;
         }
         else{
-        	left_speed= 0;
-        	right_speed= 0;
+        	left_speed = 0;
+        	right_speed = 0;
         	isTargetangle = true;
         }
         SmartDashboard.putNumber("error_angle", error_angle);
