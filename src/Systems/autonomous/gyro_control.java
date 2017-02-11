@@ -74,8 +74,8 @@ public class gyro_control {
         		left_speed = max_speed;
         	}//limit the speed
         	else{
-        		right_speed = error_angle*x;
-        		left_speed = error_angle*x;
+        		right_speed = -error_angle*x;
+        		left_speed = -error_angle*x;
         	}
         	isTargetangle = false;
         }
@@ -85,8 +85,8 @@ public class gyro_control {
         		right_speed = -max_speed;
         	}//limit the speed
         	else{
-        		right_speed = error_angle*x;
-        		left_speed = error_angle*x;
+        		right_speed = -error_angle*x;
+        		left_speed = -error_angle*x;
         	}
         	isTargetangle = false;
         }
@@ -96,6 +96,8 @@ public class gyro_control {
         	isTargetangle = true;
         }
         SmartDashboard.putNumber("error_angle", error_angle);
+        SmartDashboard.putNumber("left_speed", left_speed);
+        SmartDashboard.putNumber("right_speed", right_speed);
     }
     
     public static void set_to(double temp_to){
