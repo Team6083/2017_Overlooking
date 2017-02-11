@@ -9,7 +9,7 @@ public class autonomous_robot {
 	
 	private static boolean first_run = true;
 
-	private static int []toangle ={0,30,20,-10,90,-100};
+	private static int []rotate_angle ={0,30,20,-10,90,-100};
 	private static int error=0,i=0;
 	
 	
