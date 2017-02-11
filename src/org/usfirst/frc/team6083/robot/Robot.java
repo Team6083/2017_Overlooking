@@ -3,16 +3,10 @@ package org.usfirst.frc.team6083.robot;
 import Systems.Joysticks;
 import Systems.ballAssembly;
 import Systems.DriveBase;
+import Systems.autonomous.autonomous_robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-<<<<<<< HEAD
-
-=======
-import Systems.DriveBase;
-import Systems.Joysticks;
-import Systems.autonomous.autonomous_robot;
->>>>>>> refs/heads/feature/autonomous
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,12 +32,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
 		DriveBase.init();
-<<<<<<< HEAD
 		ballAssembly.init();
-=======
 		autonomous_robot.init_robotinit();
 		SmartDashboard.putString("Status","robotInit finished");
->>>>>>> refs/heads/feature/autonomous
 	}
 
 	/**
