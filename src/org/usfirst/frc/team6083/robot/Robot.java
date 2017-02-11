@@ -6,7 +6,13 @@ import Systems.DriveBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+<<<<<<< HEAD
 
+=======
+import Systems.DriveBase;
+import Systems.Joysticks;
+import Systems.autonomous.autonomous_robot;
+>>>>>>> refs/heads/feature/autonomous
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,7 +25,7 @@ public class Robot extends IterativeRobot {
 	final String defaultAuto = "Default";
 	final String customAuto = "My Auto";
 	String autoSelected;
-	SendableChooser<String> chooser = new SendableChooser<>();
+	SendableChooser chooser = new SendableChooser();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -32,7 +38,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
 		DriveBase.init();
+<<<<<<< HEAD
 		ballAssembly.init();
+=======
+		autonomous_robot.init_robotinit();
+		SmartDashboard.putString("Status","robotInit finished");
+>>>>>>> refs/heads/feature/autonomous
 	}
 
 	/**
@@ -48,10 +59,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autoSelected = chooser.getSelected();
+		autoSelected = (String) chooser.getSelected();
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
+		autonomous_robot.init();
 	}
 
 	/**
@@ -62,10 +74,13 @@ public class Robot extends IterativeRobot {
 		switch (autoSelected) {
 		case customAuto:
 			// Put custom auto code here
+			autonomous_robot.set_angle_to();
 			break;
 		case defaultAuto:
 		default:
 			// Put default auto code here
+			autonomous_robot.autonomousPeriodic();
+			DriveBase.input_control();
 			break;
 		}
 	}
