@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class gyro_control {
     private static ADXRS450_Gyro Gyro = new ADXRS450_Gyro(SPI.Port.kOnboardCS0);
     private static double error_angle=0,current_angle,delta_angle=0,x=0.01,to=0;
-    private static double error_range=8,max_speed=0.2;
+    private static double error_range=3,max_speed=0.25;
 	
     public static double left_speed=0,right_speed=0;
     
