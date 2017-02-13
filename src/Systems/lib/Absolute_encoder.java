@@ -7,7 +7,8 @@ public class Absolute_encoder {
 	
 	private AnalogInput encoder;
 	
-	private int encoder_step;//the step of this lap
+	private int step;//the step of this lap
+	private int lap;
 	
 	Absolute_encoder(int port){
 		encoder_port = port;
@@ -15,6 +16,7 @@ public class Absolute_encoder {
 	}	
 	
 	public void read_distence(){
-		encoder_step = encoder.getValue();
+		step = encoder.getValue();
+		
 	}
 }
