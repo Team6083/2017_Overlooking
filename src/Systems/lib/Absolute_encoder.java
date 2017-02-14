@@ -18,5 +18,6 @@ public class Absolute_encoder {
 	public void read_distence(){
 		step = encoder.getValue();
 		
+		
 	}
 }
