@@ -10,7 +10,7 @@ public class Absolute_encoder {
 	private static final int min_step = 0;
 	private static final int max_step = 4096;//needs to check out the value
 	
-	private int step;//the step of this lap
+	private int step,prev_step;//the step of this lap
 	private int lap;
 	
 	Absolute_encoder(int port){
