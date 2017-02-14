@@ -13,8 +13,9 @@ public class Absolute_encoder {
 	
 	private int step,prev_step;//the step of this lap
 	private int accumulation_step;
+	private int start_step;
 	
-	Absolute_encoder(int port){
+	public Absolute_encoder(int port){
 		encoder_port = port;
 		encoder = new AnalogInput(encoder_port);
 		prev_step = encoder.getValue()-min_step;
@@ -22,7 +23,11 @@ public class Absolute_encoder {
 		step = 0;
 	}	
 	
-	public void read_step(){
+	public void loop(){
+		read_step();
+	}
+	
+	private void read_step(){
 		step = encoder.getValue() - min_step;
 		if(step-prev_step > -lap_count_value){
 			accumulation_step = accumulation_step + step;
@@ -33,5 +38,16 @@ public class Absolute_encoder {
 		else{
 			accumulation_step = accumulation_step + step - prev_step;
 		}//in same lap
+	}
+	
+	public int get_distence(){
+		return accumulation_step-start_step;
+	}
+	
+	public void set_start_step(){
+		start_step = step;
+	}
+	public void set_start_step(int in_step){
+		start_step = in_step;
 	}
 }
