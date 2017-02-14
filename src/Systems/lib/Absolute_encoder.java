@@ -7,6 +7,9 @@ public class Absolute_encoder {
 	
 	private AnalogInput encoder;
 	
+	private static final int min_step = 0;
+	private static final int max_step = 4096;//needs to check out the value
+	
 	private int step;//the step of this lap
 	private int lap;
 	
