@@ -20,7 +20,6 @@ public class autonomous_robot {
 	
 	//init code when robot during autonomous mode
 	public static void init(){
-		gyro_control.init();
 		
 		SmartDashboard.putBoolean("Auto Code Inited", true);
 		SmartDashboard.putNumber("to", 0);
