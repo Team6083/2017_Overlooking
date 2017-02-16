@@ -14,7 +14,7 @@ public class encoder {
 	private static final int right_port = 1;
 	
 	private static int error_range = 10;
-	private static double max_speed = 0.6;
+	private static double max_speed = 0.4;
 	
 	public static boolean isTargetdistence = false;
 	public static double left_speed=0,right_speed=0;
