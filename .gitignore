@@ -1,9 +1,6 @@
 /bin/
 /build/
 /dist/
-<<<<<<< HEAD
 /.classpath
 /sysProps.xml
-=======
-.classpath
->>>>>>> refs/heads/feature/encoder
+
