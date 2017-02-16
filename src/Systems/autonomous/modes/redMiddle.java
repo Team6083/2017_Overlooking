@@ -4,14 +4,39 @@ import Systems.autonomous.actions.*;
 
 public class redMiddle {
 	
-	private static ControlDrivebase drive;
-	private static double[] walk_distences = {};
+	private static int index = 0;
 	
 	public static void init(){
-		drive = new ControlDrivebase(walk_distences);
+		
 	}
 	
-	public static void loop(){
+	public static void liner(){
+		
+	}
+	
+	public static void excuter(int action,int value){
+		
+		boolean finish = false;
+		
+		switch(action){
+		case 1:
+			ControlDrivebase walk = new ControlDrivebase(value);
+			while(!walk.isFinished()){
+				walk.loop();
+			}
+			walk.done();
+			break;
+		case 2:
+			rotateToAngle turn = new rotateToAngle(value);
+			while(!turn.isFinished()){
+				turn.loop();
+			}
+			turn.done();
+			break;
+		default:
+			
+			break;
+		}
 		
 	}
 	

@@ -5,28 +5,22 @@ import Systems.DriveBase;
 
 public class ControlDrivebase implements Action {
 	
-	private double[] distence;
-	private int current_index;
-	
-	public boolean isInTarget = false;
+	private double distence;
 	
 	@Override
 	public boolean isFinished() {
-		if(distence.length < current_index) return true;
-		else return false;
+		return encoder.isTargetdistence;
 	}
 
 	@Override
 	public void loop() {
 		encoder.loop();
 		DriveBase.input(encoder.left_speed, encoder.left_speed);
-		isInTarget = encoder.isTargetdistence;
 	}
 	
 	@Override
 	public void update() {
-		encoder.set_to(distence[current_index]);
-		current_index++;
+		encoder.set_to(distence);
 	}
 
 
@@ -39,11 +33,11 @@ public class ControlDrivebase implements Action {
 	public void start() {
 		encoder.init();
 		DriveBase.init();
-		current_index = 0;
 	}
 	
-	public ControlDrivebase(double[] temp){
-		distence = temp;
+	public ControlDrivebase(double dis){
+		distence = dis;
+		update();
 	}
 
 }
