@@ -12,8 +12,8 @@ public class ControlDrivebase implements Action {
 	
 	@Override
 	public boolean isFinished() {
-		
-		return false;
+		if(distence.length < current_index) return true;
+		else return false;
 	}
 
 	@Override
