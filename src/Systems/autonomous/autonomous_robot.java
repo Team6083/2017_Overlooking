@@ -4,6 +4,7 @@ import Systems.autonomous.gyro_control;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import Systems.DriveBase;
+import Systems.autonomous.actions.*;
 
 public class autonomous_robot {
 	
@@ -33,9 +34,10 @@ public class autonomous_robot {
 	}
 	
 	
-	public static void autonomousPeriodic() {
+	public static void set_angle_delta_angle() {
 			gyro_control.rotate();
 			SmartDashboard.putBoolean("isTargetangle", gyro_control.isTargetangle);
 			DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
 	}
+	
 }
