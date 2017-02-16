@@ -13,6 +13,11 @@ public interface Action {
      * Called periodically after the action had been started
      */
     public abstract void loop();
+    
+    /**
+     * Call this when the previous step had finished
+     */
+    public abstract void update();
 
     /**
      * Run code once when the action finishes, usually for clean up
