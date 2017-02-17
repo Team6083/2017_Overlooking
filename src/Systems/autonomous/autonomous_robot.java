@@ -22,12 +22,17 @@ public class autonomous_robot {
 	public static void init(){
 		
 		test_automode.init();
+		redMiddle.init();
 		
 		SmartDashboard.putBoolean("Auto Code Inited", true);
 	}
 	
 	public static void test_mode(){
 		test_automode.loop();
+	}
+	
+	public static void redMiddle(){
+		redMiddle.loop();
 	}
 	
 	
