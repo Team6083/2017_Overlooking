@@ -30,7 +30,7 @@ public class encoder {
 		walk_distence();
 	}
 	
-	public static void walk_distence(){
+	private static void walk_distence(){
 		error_step_left = left.get_distence() - target_step;
 		error_step_right = right.get_distence() - target_step;
 		
