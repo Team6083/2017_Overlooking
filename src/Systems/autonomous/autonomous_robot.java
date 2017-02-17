@@ -3,6 +3,7 @@ package Systems.autonomous;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import Systems.DriveBase;
+import Systems.ballAssembly;
 import Systems.encoder;
 
 import Systems.autonomous.gyro_control;
@@ -12,10 +13,6 @@ import Systems.autonomous.modes.*;
 public class autonomous_robot {
 	
 	private static boolean first_run = true;
-
-	private static int []rotate_angle ={0,30,20,-10,90,-100};
-	private static int error=0,i=0;
-	
 	
 	public static void init_robotinit(){
 		gyro_control.gyro_reset();
@@ -24,13 +21,9 @@ public class autonomous_robot {
 	//init code when robot during autonomous mode
 	public static void init(){
 		
-		SmartDashboard.putBoolean("Auto Code Inited", true);
-		SmartDashboard.putNumber("to", 0);
-		
-		encoder.init();
-		gyro_control.init();
-		
 		test_automode.init();
+		
+		SmartDashboard.putBoolean("Auto Code Inited", true);
 	}
 	
 	public static void test_mode(){
@@ -40,7 +33,7 @@ public class autonomous_robot {
 	
 	
 	/*
-	 * Below is the test zone, don't use the code that after this for matchs
+	 * Below is the test zone, don't use the code that after this for matches
 	 */
 	
 	public static void test_enc(){
