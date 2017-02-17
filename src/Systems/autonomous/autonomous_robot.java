@@ -24,6 +24,8 @@ public class autonomous_robot {
 		test_automode.init();
 		redMiddle.init();
 		
+		encoder.set_to(80);
+		
 		SmartDashboard.putBoolean("Auto Code Inited", true);
 	}
 	
