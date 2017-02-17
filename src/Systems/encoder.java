@@ -1,6 +1,7 @@
 package Systems;
 
 import Systems.lib.Absolute_encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class encoder {
 	private static int error_step_left,error_step_right,target_step=0;
@@ -8,7 +9,7 @@ public class encoder {
 	
 	private static Absolute_encoder left,right;
 	
-	private static final int wheel_circumference = 0;//needs to measure
+	private static final int wheel_circumference = 19;//needs to measure
 	
 	private static final int left_port = 0;
 	private static final int right_port = 1;
@@ -28,6 +29,10 @@ public class encoder {
 		left.loop();
 		right.loop();
 		walk_distence();
+		
+		SmartDashboard.putNumber("target_step",target_step);
+		SmartDashboard.putNumber("error_step_right", error_step_right);
+		SmartDashboard.putNumber("accumulation_step", left.get_accumulation_step());
 	}
 	
 	private static void walk_distence(){
