@@ -37,7 +37,7 @@ public class DriveBase {
     	
     	switch (control_mode) {
     	case 1:
-    		
+    		input_control();
     		break;
     	case 2:
     		arcade();
@@ -80,7 +80,7 @@ public class DriveBase {
     	right2.set(right_speed);
     	dashboard();
     }
-    public static void input_control(){
+    private static void input_control(){
     	control_mode = 1;
     	SmartDashboard.putString("Control mode", "Input control");
     	
@@ -96,7 +96,6 @@ public class DriveBase {
         	left_speed = temp_left;
         	right_speed = temp_right;
     	}
-    	input_control();
     }
     
     private static void dashboard(){
@@ -105,8 +104,8 @@ public class DriveBase {
     }
     
     
-    private static void mode_selector(){
-    	
+    public static void mode_selector(int mode){
+    	control_mode = mode;
     }
     
 }
