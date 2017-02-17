@@ -65,12 +65,12 @@ public class Robot extends IterativeRobot {
 		switch (autoSelected) {
 		case customAuto:
 			// Put custom auto code here
-			autonomous_robot.set_angle_to();
+			autonomous_robot.test_enc();
 			break;
 		case defaultAuto:
 		default:
 			// Put default auto code here
-			
+			autonomous_robot.test_mode();
 			break;
 		}
 	}
