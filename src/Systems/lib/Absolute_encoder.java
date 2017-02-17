@@ -25,6 +25,7 @@ public class Absolute_encoder {
 	
 	public void loop(){
 		read_step();
+		prev_step = step;
 	}
 	
 	private void read_step(){
@@ -40,6 +41,10 @@ public class Absolute_encoder {
 		}//in same lap
 	}
 	
+	public int get_accumulation_step(){
+		return accumulation_step;
+	}
+	
 	public int get_distence(){
 		return accumulation_step-start_step;
 	}
@@ -49,5 +54,9 @@ public class Absolute_encoder {
 	}
 	public void set_start_step(int in_step){
 		start_step = in_step;
+	}
+	
+	public int get_enc_value(){
+		return encoder.getValue();
 	}
 }
