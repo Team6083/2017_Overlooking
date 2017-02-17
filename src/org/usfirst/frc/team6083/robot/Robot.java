@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	final String defaultAuto = "Default";
 	final String customAuto = "My Auto";
+	final String redMiddle = "Red Middle";
 	String autoSelected;
 	SendableChooser chooser = new SendableChooser();
 
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("My Auto", customAuto);
+		chooser.addObject("Red Middle", redMiddle);
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
 		DriveBase.init();
@@ -70,6 +72,10 @@ public class Robot extends IterativeRobot {
 		case customAuto:
 			// Put custom auto code here
 			autonomous_robot.test_enc();
+			break;
+			
+		case redMiddle:
+			autonomous_robot.redMiddle();
 			break;
 		case defaultAuto:
 		default:
