@@ -1,9 +1,13 @@
 package Systems.autonomous;
 
-import Systems.autonomous.gyro_control;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import Systems.DriveBase;
+import Systems.encoder;
+
+import Systems.autonomous.gyro_control;
+
+import Systems.autonomous.modes.*;
 
 public class autonomous_robot {
 	
@@ -22,6 +26,25 @@ public class autonomous_robot {
 		
 		SmartDashboard.putBoolean("Auto Code Inited", true);
 		SmartDashboard.putNumber("to", 0);
+		
+		encoder.init();
+		gyro_control.init();
+		
+		test_automode.init();
+	}
+	
+	public static void test_mode(){
+		test_automode.loop();
+	}
+	
+	
+	
+	/*
+	 * Below is the test zone, don't use the code that after this for matchs
+	 */
+	
+	public static void test_enc(){
+		encoder.loop();
 	}
 	
 	public static void set_angle_to(){
@@ -33,9 +56,9 @@ public class autonomous_robot {
 	
 	
 	public static void set_angle_delta_angle() {
-			gyro_control.rotate();
-			SmartDashboard.putBoolean("isTargetangle", gyro_control.isTargetangle);
-			DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
+		gyro_control.rotate();
+		SmartDashboard.putBoolean("isTargetangle", gyro_control.isTargetangle);
+		DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
 	}
 	
 }
