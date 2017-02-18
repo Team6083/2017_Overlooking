@@ -30,11 +30,11 @@ public class Absolute_encoder {
 	
 	private void read_step(){
 		step = encoder.getValue() - min_step;
-		if(step-prev_step > -lap_count_value){
-			accumulation_step = accumulation_step + step;
+		if(step-prev_step < -lap_count_value){
+			accumulation_step = accumulation_step + step + (max_step - prev_step);
 		}//forward count lap
 		else if(step-prev_step > lap_count_value){
-			accumulation_step = accumulation_step - (max_step - step);
+			accumulation_step = accumulation_step - (max_step - step) - prev_step;
 		}//backward count lap
 		else{
 			accumulation_step = accumulation_step + step - prev_step;
