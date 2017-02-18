@@ -7,9 +7,9 @@ public class Absolute_encoder {
 	
 	private AnalogInput encoder;
 	
-	public static final int min_step = 0;
-	public static final int max_step = 4096;//needs to check out the value
-	private static int lap_count_value = 4000;
+	public static final int min_step = 18;
+	public static final int max_step = 4032;//needs to check out the value
+	private static int lap_count_value = 2000;
 	
 	private int step,prev_step;//the step of this lap
 	private int accumulation_step;
@@ -51,6 +51,7 @@ public class Absolute_encoder {
 	
 	public void set_start_step(){
 		start_step = step;
+		System.out.println("Set ecnoder "+encoder_port+" start_step to "+start_step);
 	}
 	public void set_start_step(int in_step){
 		start_step = in_step;
