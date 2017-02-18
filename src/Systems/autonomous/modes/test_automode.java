@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class test_automode {
 	
 	private static Rotate r1,r2;
+	private static Move m1;
 	private static Stop s1;
 	
 	private static final int action_count = 3;
@@ -23,13 +24,14 @@ public class test_automode {
 		r1 = new Rotate(180);
 		r2 = new Rotate(-90);
 		s1 = new Stop(3000);
+		m1 = new Move(20);
 		
 		for(int i=0;i<action_count;i++){
 			status[i] = 0;
 		}
 		
 		
-		r1.start();
+		m1.start();
 		status[0] = 1;
 		SmartDashboard.putString("Control mode", "auto inited");
 		
@@ -38,8 +40,9 @@ public class test_automode {
 	public static void loop(){
 		if(finished) return;
 		if(index == 0 && status[0] == 1){
-			r1.loop();
-			if(r1.isFinished()){
+			m1.loop();
+			if(m1.isFinished()){
+				m1.done();
 				status[index] = 2;
 				index++;
 			}
@@ -52,7 +55,7 @@ public class test_automode {
 					index++;
 				}
 			}
-		}
+		}/*
 		else if(index == 2){
 			if(status[2] == 0){
 				r2.start();
@@ -64,7 +67,7 @@ public class test_automode {
 				finished = true;
 				index++;
 			}
-		}
+		}*/
 		
 		
 		
