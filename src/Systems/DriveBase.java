@@ -46,6 +46,7 @@ public class DriveBase {
     	default:
     		tankDrive();
     	}
+    	dashboard();
     }
     
     public static void tankDrive(){
@@ -62,7 +63,7 @@ public class DriveBase {
     	right1.set(right_speed);
     	right2.set(right_speed);
     	
-    	dashboard();
+    	
     }
     
     public static void arcade(){
@@ -78,7 +79,7 @@ public class DriveBase {
     	left2.set(left_speed);
     	right1.set(right_speed);
     	right2.set(right_speed);
-    	dashboard();
+    	
     }
     private static void input_control(){
     	control_mode = 1;
@@ -88,7 +89,7 @@ public class DriveBase {
     	left2.set(left_speed);
     	right1.set(right_speed);
     	right2.set(right_speed);
-    	dashboard();
+    	
     }
     
     public static void input(double temp_left,double temp_right){
@@ -99,8 +100,9 @@ public class DriveBase {
     }
     
     private static void dashboard(){
-    	SmartDashboard.putNumber("left_drive", left1.get());
-    	SmartDashboard.putNumber("right_drive", right1.get());
+    	SmartDashboard.putNumber("left_drive1", left1.get());
+    	SmartDashboard.putNumber("left_drive2", left2.get());
+    	SmartDashboard.putNumber("right_drive", (right1.get()+right2.get())/2);
     }
     
     

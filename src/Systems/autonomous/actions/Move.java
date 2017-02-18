@@ -23,6 +23,7 @@ public class Move implements Action {
 		started = true;
 		encoder.set_to(distance);
 		DriveBase.mode_selector(1);
+		DriveBase.drivabase_control();
 	}
 
 	@Override
