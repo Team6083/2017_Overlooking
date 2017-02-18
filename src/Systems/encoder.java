@@ -11,11 +11,11 @@ public class encoder {
 	
 	private static final int wheel_circumference = 19;//needs to measure
 	
-	private static final int left_port = 0;
-	private static final int right_port = 1;
+	private static final int left_port = 1;
+	private static final int right_port = 0;
 	
 	private static int error_range = 10;
-	private static double max_speed = 0.4;
+	private static double max_speed = 0.3;
 	
 	public static boolean isTargetdistance = false;
 	public static double left_speed=0,right_speed=0;
@@ -29,10 +29,8 @@ public class encoder {
 		left.loop();
 		right.loop();
 		walk_distence();
+		dashboard();
 		
-		SmartDashboard.putNumber("target_step",target_step);
-		SmartDashboard.putNumber("error_step_right", error_step_right);
-		SmartDashboard.putNumber("accumulation_step", left.get_accumulation_step());
 	}
 	
 	private static void walk_distence(){
@@ -67,8 +65,14 @@ public class encoder {
 	
     public static void set_to(double distance){//for inches
     	double temp = distance / wheel_circumference;
-    	target_step = (int) (temp * Absolute_encoder.max_step);
+    	target_step = (int) (temp * (Absolute_encoder.max_step-Absolute_encoder.min_step) );
     	left.set_start_step();
     	right.set_start_step();
+    }
+    
+    private static void dashboard(){
+		SmartDashboard.putNumber("target_step",target_step);
+		SmartDashboard.putNumber("error_step_right_left", error_step_left);
+		SmartDashboard.putNumber("accumulation_step", left.get_accumulation_step());
     }
 }
