@@ -90,8 +90,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		DriveBase.mode_selector(0);
 		Joysticks.update_data();
-		DriveBase.tankDrive();
+		DriveBase.drivabase_control();;
 		ballAssembly.teleop();
 	}
 
