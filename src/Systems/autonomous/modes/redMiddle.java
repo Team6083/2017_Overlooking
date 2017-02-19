@@ -1,5 +1,6 @@
 package Systems.autonomous.modes;
 
+import Systems.DriveBase;
 import Systems.autonomous.actions.*;
 
 public class redMiddle {
@@ -7,6 +8,8 @@ public class redMiddle {
 	private static Move goToAirShip,walkbackfromAirShip,moveTobaseline,goOverbaseine;
 	private static Stop stopAtAirShip;
 	private static Rotate turnToBaseline1,turnToBaseline2;
+	
+	private static boolean finish;
 	
 	private static final int action_count = 7;
 	private static int[] status = new int[action_count];
@@ -27,6 +30,7 @@ public class redMiddle {
 		goOverbaseine = new Move(57);
 		
  		
+		finish = false;
 		
 		for(int i=0;i<action_count;i++){
 			status[i] = 0;
@@ -122,9 +126,18 @@ public class redMiddle {
 			}
 		}
 		
+		if(status[action_count-1] == 2 && !finish){
+			finish = true;
+			return;
+		}
+		else if(status[action_count-1] == 2 && finish){
+			return;
+		}
+		
 	}
 	
 	public static void finish(){
-		
+		DriveBase.input(0, 0);
+		DriveBase.drivabase_control();
 	}
 }
