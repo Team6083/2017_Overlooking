@@ -6,6 +6,7 @@ public class redMiddle {
 	
 	private static Move goToAirShip,walkbackfromAirShip;
 	private static Stop stopAtAirShip;
+	private static Rotate turnToBaseline1,turnToBaseline2;
 	
 	private static final int action_count = 3;
 	private static int[] status = new int[action_count];
