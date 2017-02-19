@@ -29,6 +29,7 @@ public class Move implements Action {
 	@Override
 	public void done() {
 		DriveBase.input(0, 0);
+		DriveBase.drivabase_control();
 	}
 
 	@Override
