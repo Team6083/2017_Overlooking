@@ -23,7 +23,7 @@ public class redMiddle {
 	public static void init(){
 		goToAirShip = new Move(110);// put distance to airship
 		stopAtAirShip = new Stop(5000);
-		walkbackfromAirShip = new Move(43);
+		walkbackfromAirShip = new Move(-43);
 		turnToBaseline1 = new Rotate(-68);
 		moveTobaseline = new Move(108);
 		turnToBaseline2 = new Rotate(70);
