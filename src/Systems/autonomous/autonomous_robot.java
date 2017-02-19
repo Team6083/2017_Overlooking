@@ -26,7 +26,7 @@ public class autonomous_robot {
 		
 		encoder.set_to(80);
 		
-		SmartDashboard.putBoolean("Auto Code Inited", true);
+		System.out.println("autonomous_java:Auto Code Inited");
 	}
 	
 	public static void test_mode(){

@@ -102,7 +102,8 @@ public class DriveBase {
     private static void dashboard(){
     	SmartDashboard.putNumber("left_drive1", left1.get());
     	SmartDashboard.putNumber("left_drive2", left2.get());
-    	SmartDashboard.putNumber("right_drive", (right1.get()+right2.get())/2);
+    	SmartDashboard.putNumber("right_drive1", right1.get());
+    	SmartDashboard.putNumber("right_drive2", right2.get());
     }
     
     
