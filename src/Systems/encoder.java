@@ -31,12 +31,12 @@ public class encoder {
 		right.loop();
 		walk_distence();
 		dashboard();
-		
 	}
 	
 	private static void walk_distence(){
 		error_step_left = -left.get_distence() - target_step;
-		error_step_right = right.get_distence() - target_step;
+		error_step_right = right.get_distence() - target_step;//get the error step
+		
 		
 		if((int) Math.abs(error_step_left) > error_range){
 			left_speed = (error_step_left * x);
@@ -48,6 +48,8 @@ public class encoder {
 		}
 		else right_speed = 0;
 		
+		
+		//make the speed won't expend the max speed
 		if(Math.abs(left_speed) > max_speed){
 			if(left_speed > 0) left_speed = max_speed;
 			else left_speed = -max_speed;
@@ -62,10 +64,11 @@ public class encoder {
 		}
 		else if(right_speed == 0) isTargetdistancer = true;
 		
+		
 		if(isTargetdistancer&&isTargetdistancel) isTargetdistance = true;
 		else isTargetdistance = false;
-		left_speed = -left_speed;
 		
+		left_speed = -left_speed;//reverse the left drive
 	}
 	
     public static void set_to(double distance){//for inches
@@ -79,6 +82,5 @@ public class encoder {
 		SmartDashboard.putNumber("target_step",target_step);
 		SmartDashboard.putNumber("error_step_left", error_step_left);
 		SmartDashboard.putNumber("error_step_right", error_step_right);
-		SmartDashboard.putNumber("accumulation_step", left.get_accumulation_step());
     }
 }
