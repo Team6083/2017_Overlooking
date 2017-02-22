@@ -1,6 +1,7 @@
 package Systems.lib;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Absolute_encoder {
 	private int encoder_port;
@@ -35,6 +36,7 @@ public class Absolute_encoder {
 	public void loop(){
 		read_step();
 		prev_step = step;
+		SmartDashboard.putNumber("encoder "+encoder_port+" accumulation_step", accumulation_step);
 	}
 	
 	private void read_step(){
