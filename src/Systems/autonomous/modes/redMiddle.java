@@ -11,14 +11,12 @@ public class redMiddle {
 	
 	private static boolean finish;
 	
-	private static final int action_count = 7;
-	/*
-	 * 0 for default
-	 * 1 for started
-	 * 2 for finished
-	 */
 	private static int index = 0;
 	private static Action curraction;
+	
+	public static boolean ifFinished(){
+		return finish;
+	}
 	
 	public static void init(){
 		goToAirShip = new Move(110);// put distance to airship
