@@ -40,7 +40,7 @@ public class Absolute_encoder {
 	}
 	
 	private void read_step(){
-		if(reverse) step = encoder.getValue() - min_step;
+		if(reverse) step = -encoder.getValue() - min_step;
 		else step = encoder.getValue() - min_step;
 		if(step-prev_step < -lap_count_value){
 			accumulation_step = accumulation_step + step + (max_step - prev_step);
@@ -62,11 +62,9 @@ public class Absolute_encoder {
 	}
 	
 	public void set_start_step(){
-		start_step = step;
+		start_step = accumulation_step;
 		System.out.println("Set ecnoder "+encoder_port+" start_step to "+start_step);
-	}
-	public void set_start_step(int in_step){
-		start_step = in_step;
+		System.out.println("Current distence"+get_distence());
 	}
 	
 	public int get_enc_value(){

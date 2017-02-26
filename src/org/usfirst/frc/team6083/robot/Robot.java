@@ -92,7 +92,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		DriveBase.mode_selector(0);
 		Joysticks.update_data();
-		DriveBase.drivabase_control();;
+		DriveBase.drivabase_control();
 		ballAssembly.teleop();
 	}
 

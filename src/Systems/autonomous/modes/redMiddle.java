@@ -59,6 +59,7 @@ public class redMiddle {
 				curraction = goToAirShip;
 				finish = true;
 			}
+			curraction.start();
 		}
 		
 	}
