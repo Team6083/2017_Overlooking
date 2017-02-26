@@ -2,6 +2,7 @@ package Systems.autonomous.modes;
 
 import Systems.DriveBase;
 import Systems.autonomous.actions.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class redMiddle {
 	
@@ -38,6 +39,7 @@ public class redMiddle {
 		
 		if(curraction.isFinished()){
 			curraction.done();
+			System.out.println("Action "+index+" had finished.");
 			index++;
 			switch(index){
 			case 1:
@@ -57,8 +59,12 @@ public class redMiddle {
 				break;
 			case 6:
 				curraction = goToAirShip;
+				break;
+			case 7:
 				finish = true;
+				break;
 			}
+			SmartDashboard.putInt("Auto Status", index);
 			curraction.start();
 		}
 		

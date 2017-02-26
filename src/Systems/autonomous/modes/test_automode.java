@@ -37,7 +37,7 @@ public class test_automode {
 		curraction = m1;
 		curraction.start();
 		finish = false;
-		SmartDashboard.putString("Control mode", "auto inited");
+		SmartDashboard.putString("Control mode", "test_automode inited");
 		
 	}
 	
@@ -55,7 +55,7 @@ public class test_automode {
 			case 2:
 				curraction = m2;
 				break;
-			case 3:
+			default:
 				finish = true;
 				break;
 			}
