@@ -14,7 +14,7 @@ public class encoder {
 	private static final int left_port = -1;
 	private static final int right_port = 0;
 	
-	private static int error_range = 1000;
+	private static int error_range = 1500;
 	private static double max_speed = 0.3;
 	
 	private static boolean isTargetdistancel = false,isTargetdistancer = false;
@@ -73,6 +73,7 @@ public class encoder {
 	
     public static void set_to(double distance){//for inches
     	double temp = distance / wheel_circumference;
+    	System.out.println("temp = "+temp);
     	target_step = (int) (temp * (Absolute_encoder.max_step-Absolute_encoder.min_step) );
     	left.set_start_step();
     	right.set_start_step();
@@ -82,5 +83,7 @@ public class encoder {
 		SmartDashboard.putNumber("target_step",target_step);
 		SmartDashboard.putNumber("error_step_left", error_step_left);
 		SmartDashboard.putNumber("error_step_right", error_step_right);
+		SmartDashboard.putNumber("left_distence", left.get_distence());
+		SmartDashboard.putNumber("right_distence", right.get_distence());
     }
 }

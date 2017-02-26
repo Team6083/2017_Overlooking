@@ -54,8 +54,8 @@ public class DriveBase {
     	left_speed = -Joysticks.ly/speed_down;
     	right_speed = Joysticks.ry/speed_down;
     	
-    	if(Joysticks.lb) left_speed = left_speed*2;
-    	if(Joysticks.rb) right_speed = right_speed*2;//boost
+    	if(Joysticks.lb) left_speed = left_speed*2.5;
+    	if(Joysticks.rb) right_speed = right_speed*2.5;//boost
 
     	
     	left1.set(left_speed);
