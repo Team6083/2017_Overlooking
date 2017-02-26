@@ -30,7 +30,7 @@ public class autonomous_robot {
 	}
 	
 	public static void test_mode(){
-		test_automode.loop();
+		if(!test_automode.isFinish()) test_automode.loop();
 	}
 	
 	public static void redMiddle(){
