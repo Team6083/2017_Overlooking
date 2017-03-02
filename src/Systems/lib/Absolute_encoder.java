@@ -8,8 +8,8 @@ public class Absolute_encoder {
 	
 	private AnalogInput encoder;
 	
-	public static final int min_step = 18;
-	public static final int max_step = 4032;//needs to check out the value
+	public static final int min_step = 34;
+	public static final int max_step = 3946;//needs to check out the value
 	private static int lap_count_value = 2000;
 	
 	private int step,prev_step;//the step of this lap
