@@ -14,12 +14,6 @@ public class DriveBase {
     private static final int right1_port = 3;
     private static final int right2_port = 4;
     
-<<<<<<< HEAD
-    private static final int left1_port = 1;
-    private static final int left2_port = 2;
-    private static final int right1_port = 3;
-    private static final int right2_port = 4;
-=======
 
     private static int control_mode = 0;
     /** Prevent robot interrupted by data from different control mode
@@ -27,7 +21,7 @@ public class DriveBase {
      * 1 for input_control mode
      * 2 for arcade mode
      */
->>>>>>> refs/heads/release/v2.0
+
     
     private static double speed_down = 4;
     
@@ -60,15 +54,9 @@ public class DriveBase {
     	control_mode = 0;
     	left_speed = -Joysticks.ly/speed_down;
     	right_speed = Joysticks.ry/speed_down;
-    	
-<<<<<<< HEAD
-    	if(Joysticks.lb) left_speed = left_speed*2;
-    	if(Joysticks.rb) right_speed = right_speed*2;
-=======
+
     	if(Joysticks.lb) left_speed = left_speed*2.5;
     	if(Joysticks.rb) right_speed = right_speed*2.5;//boost
-
->>>>>>> refs/heads/release/v2.0
     	
     	left1.set(left_speed);
     	left2.set(left_speed);

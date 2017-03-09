@@ -2,10 +2,7 @@ package org.usfirst.frc.team6083.robot;
 
 import Systems.Joysticks;
 import Systems.ballAssembly;
-<<<<<<< HEAD
-=======
 import Systems.DriveBase;
->>>>>>> refs/heads/release/v2.0
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -35,13 +32,9 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Red Middle", redMiddle);
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
-<<<<<<< HEAD
-		ballAssembly.init();
-=======
 		DriveBase.init();
 		ballAssembly.init();
 		SmartDashboard.putString("Status","robotInit finished");
->>>>>>> refs/heads/release/v2.0
 	}
 
 	/**
@@ -93,11 +86,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		DriveBase.mode_selector(0);
 		Joysticks.update_data();
-<<<<<<< HEAD
-		DriveBase.tankDrive();
-=======
 		DriveBase.drivabase_control();
->>>>>>> refs/heads/release/v2.0
 		ballAssembly.teleop();
 	}
 
