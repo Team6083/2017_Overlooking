@@ -2,10 +2,7 @@ package org.usfirst.frc.team6083.robot;
 
 import Systems.Joysticks;
 import Systems.ballAssembly;
-import Systems.encoder;
 import Systems.DriveBase;
-import Systems.autonomous.autonomous_robot;
-import Systems.autonomous.gyro_control;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,9 +34,6 @@ public class Robot extends IterativeRobot {
 		Joysticks.init();
 		DriveBase.init();
 		ballAssembly.init();
-		autonomous_robot.init_robotinit();
-		encoder.init();
-		gyro_control.init();
 		SmartDashboard.putString("Status","robotInit finished");
 	}
 
@@ -60,7 +54,7 @@ public class Robot extends IterativeRobot {
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
-		autonomous_robot.init();
+
 	}
 
 	/**
@@ -71,16 +65,16 @@ public class Robot extends IterativeRobot {
 		switch (autoSelected) {
 		case customAuto:
 			// Put custom auto code here
-			autonomous_robot.test_enc();
+			
 			break;
 			
 		case redMiddle:
-			autonomous_robot.redMiddle();
+			
 			break;
 		case defaultAuto:
 		default:
 			// Put default auto code here
-			autonomous_robot.test_mode();
+			
 			break;
 		}
 	}
