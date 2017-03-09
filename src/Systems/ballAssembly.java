@@ -17,4 +17,8 @@ public class ballAssembly {
 		 else if(Joysticks.b) fuel_sender.set(-0.6);
 		 else fuel_sender.set(0);
 	 }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/heads/release/v2.0

@@ -1,8 +1,11 @@
 package org.usfirst.frc.team6083.robot;
 
-import Systems.DriveBase;
 import Systems.Joysticks;
 import Systems.ballAssembly;
+<<<<<<< HEAD
+=======
+import Systems.DriveBase;
+>>>>>>> refs/heads/release/v2.0
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,8 +20,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	final String defaultAuto = "Default";
 	final String customAuto = "My Auto";
+	final String redMiddle = "Red Middle";
 	String autoSelected;
-	SendableChooser<String> chooser = new SendableChooser<>();
+	SendableChooser chooser = new SendableChooser();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -28,10 +32,16 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("My Auto", customAuto);
+		chooser.addObject("Red Middle", redMiddle);
 		SmartDashboard.putData("Auto choices", chooser);
-		DriveBase.init();
 		Joysticks.init();
+<<<<<<< HEAD
 		ballAssembly.init();
+=======
+		DriveBase.init();
+		ballAssembly.init();
+		SmartDashboard.putString("Status","robotInit finished");
+>>>>>>> refs/heads/release/v2.0
 	}
 
 	/**
@@ -47,10 +57,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autoSelected = chooser.getSelected();
+		autoSelected = (String) chooser.getSelected();
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
+
 	}
 
 	/**
@@ -61,10 +72,16 @@ public class Robot extends IterativeRobot {
 		switch (autoSelected) {
 		case customAuto:
 			// Put custom auto code here
+			
+			break;
+			
+		case redMiddle:
+			
 			break;
 		case defaultAuto:
 		default:
 			// Put default auto code here
+			
 			break;
 		}
 	}
@@ -74,8 +91,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		DriveBase.mode_selector(0);
 		Joysticks.update_data();
+<<<<<<< HEAD
 		DriveBase.tankDrive();
+=======
+		DriveBase.drivabase_control();
+>>>>>>> refs/heads/release/v2.0
 		ballAssembly.teleop();
 	}
 
