@@ -23,6 +23,7 @@ public class autonomous_robot {
 		
 		test_automode.init();
 		middle.init();
+		baseline.init();
 		
 		encoder.set_to(80);
 		
@@ -33,8 +34,12 @@ public class autonomous_robot {
 		if(!test_automode.isFinish()) test_automode.loop();
 	}
 	
-	public static void redMiddle(){
-		middle.loop();
+	public static void Middle(){
+		if(!middle.isFinish()) middle.loop();
+	}
+	
+	public static void Baseline(){
+		if(!baseline.isFinish())  baseline.loop();
 	}
 	
 	

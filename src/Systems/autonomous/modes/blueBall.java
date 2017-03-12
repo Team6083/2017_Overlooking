@@ -15,6 +15,9 @@ public class blueBall {
 	private static int index = 0;
 	private static Action curraction;
 
+	public static boolean isFinish(){
+		return finish;
+	}
 	
 	public static void init(){
 		a1 = new Move(64);

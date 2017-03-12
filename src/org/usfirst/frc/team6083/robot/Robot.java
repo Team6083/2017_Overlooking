@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	final String defaultAuto = "Default";
+	final String defaultAuto = "Baseline";
 	final String customAuto = "My Auto";
-	final String redMiddle = "Red Middle";
+	final String redMiddle = "Middle";
 	String autoSelected;
 	SendableChooser chooser = new SendableChooser();
 
@@ -75,12 +75,12 @@ public class Robot extends IterativeRobot {
 			break;
 			
 		case redMiddle:
-			autonomous_robot.redMiddle();
+			autonomous_robot.Middle();
 			break;
 		case defaultAuto:
 		default:
 			// Put default auto code here
-			autonomous_robot.test_mode();
+			autonomous_robot.Baseline();
 			break;
 		}
 	}

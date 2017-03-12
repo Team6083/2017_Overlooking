@@ -15,7 +15,7 @@ public class middle {
 	private static int index = 0;
 	private static Action curraction;
 	
-	public static boolean ifFinished(){
+	public static boolean isFinish(){
 		return finish;
 	}
 	
