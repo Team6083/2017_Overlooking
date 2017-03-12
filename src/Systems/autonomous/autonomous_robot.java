@@ -22,7 +22,7 @@ public class autonomous_robot {
 	public static void init(){
 		
 		test_automode.init();
-		redMiddle.init();
+		middle.init();
 		
 		encoder.set_to(80);
 		
@@ -34,7 +34,7 @@ public class autonomous_robot {
 	}
 	
 	public static void redMiddle(){
-		redMiddle.loop();
+		middle.loop();
 	}
 	
 	

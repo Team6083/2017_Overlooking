@@ -4,7 +4,7 @@ import Systems.DriveBase;
 import Systems.autonomous.actions.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class redMiddle {
+public class middle {
 	
 	private static Move goToAirShip,walkbackfromAirShip,moveTobaseline,goOverbaseine;
 	private static Stop stopAtAirShip;
