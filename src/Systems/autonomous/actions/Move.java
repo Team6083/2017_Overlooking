@@ -14,7 +14,7 @@ public class Move implements Action {
 		if(!started) return;
 		
 		encoder.loop();
-		DriveBase.input(-encoder.right_speed, encoder.right_speed);
+		DriveBase.input(encoder.left_speed, encoder.right_speed);
 		DriveBase.drivabase_control();
 	}
 

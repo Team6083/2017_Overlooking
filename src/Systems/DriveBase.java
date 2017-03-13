@@ -22,7 +22,7 @@ public class DriveBase {
      * 2 for arcade mode
      */
     
-    private static double speed_down = 4;
+    private static double speed_down = 2.5;
     
     
     public static void init(){
@@ -54,8 +54,8 @@ public class DriveBase {
     	left_speed = -Joysticks.ly/speed_down;
     	right_speed = Joysticks.ry/speed_down;
     	
-    	if(Joysticks.lb) left_speed = left_speed*2.5;
-    	if(Joysticks.rb) right_speed = right_speed*2.5;//boost
+    	if(Joysticks.lb) left_speed = left_speed*2;
+    	if(Joysticks.rb) right_speed = right_speed*2;//boost
 
     	
     	left1.set(left_speed);

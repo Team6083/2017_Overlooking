@@ -94,8 +94,12 @@ public class gyro_control {
         SmartDashboard.putNumber("right_speed", right_speed);
     }
     
+    public static void set_deltato(double temp_deltato){
+    	to += temp_deltato;
+    }
+    
     public static void set_to(double temp_to){
-    	to += temp_to;
+    	to = temp_to;
     }
     
 }
