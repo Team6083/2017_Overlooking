@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase {
 
-    private static VictorSP left1,left2,right1,right2;
+    public static VictorSP left1,left2,right1,right2;
     private static double left_speed,right_speed;
 
     private static final int left1_port = 1;
@@ -109,6 +109,7 @@ public class DriveBase {
     
     public static void mode_selector(int mode){
     	control_mode = mode;
+    	System.out.println("Current control mode is "+mode);
     }
     
 }

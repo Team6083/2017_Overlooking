@@ -15,7 +15,7 @@ public class moveViaTimer implements Action {
 	@Override
 	public void loop() {
 		if(finished) return;
-		if(timer.get()>=time){
+		if(timer.get()>=time&&gyro_control.isTargetangle){
 			finished = true;
 		}
 		gyro_control.rotate();

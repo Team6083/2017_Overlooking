@@ -1,3 +1,4 @@
+
 package Systems;
 
 import Systems.lib.Absolute_encoder;
@@ -5,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class encoder {
 	private static int error_step_left,error_step_right,target_step=0;
-	private static double x = 0.00005;
+	private static double x = 0.0001;
 	
 	private static Absolute_encoder left,right;
 	
@@ -16,6 +17,7 @@ public class encoder {
 	
 	private static int error_range = 1500;
 	private static double max_speed = 0.3;
+	private static double min_speed = 0.1;
 	
 	private static boolean isTargetdistancel = false,isTargetdistancer = false;
 	public static boolean isTargetdistance = false;
@@ -34,7 +36,7 @@ public class encoder {
 	}
 	
 	private static void walk_distence(){
-		error_step_left = -left.get_distence() - target_step;
+		error_step_left = left.get_distence() - target_step;
 		error_step_right = right.get_distence() - target_step;//get the error step
 		
 		
@@ -50,12 +52,21 @@ public class encoder {
 		
 		
 		//make the speed won't expend the max speed
+		
+		if(Math.abs(left_speed) < min_speed){
+			left_speed = left_speed + 0.1;
+		}
+		
 		if(Math.abs(left_speed) > max_speed){
 			if(left_speed > 0) left_speed = max_speed;
 			else left_speed = -max_speed;
 			isTargetdistancel = false;
 		}
 		else if(left_speed == 0) isTargetdistancel = true;
+		
+		if(Math.abs(left_speed) < min_speed ){
+			right_speed = right_speed + 0.1;
+		}
 		
 		if(Math.abs(right_speed) > max_speed){
 			if(right_speed > 0) right_speed = max_speed;
@@ -69,6 +80,10 @@ public class encoder {
 		else isTargetdistance = false;
 		
 		left_speed = -left_speed;//reverse the left drive
+	}
+	
+	public void allign(){
+		
 	}
 	
     public static void set_to(double distance){//for inches
@@ -85,5 +100,7 @@ public class encoder {
 		SmartDashboard.putNumber("error_step_right", error_step_right);
 		SmartDashboard.putNumber("left_distence", left.get_distence());
 		SmartDashboard.putNumber("right_distence", right.get_distence());
+		x = SmartDashboard.getNumber("x");
+				
     }
 }

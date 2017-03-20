@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class baseline {
 	
 	private static moveViaTimer goBaseline;
+	private static Move m1;
 	private static Stop stop;
 	
 	private static boolean finish;
@@ -19,12 +20,12 @@ public class baseline {
 	}
 	
 	public static void init(){
-		goBaseline = new moveViaTimer(5,0);// put time to baseline
+		goBaseline = new moveViaTimer(3,0);// put time to baseline
 		stop = new Stop(5000);
-		
+		m1 = new Move(53);
  		
 		finish = false;
-		curraction = goBaseline;
+		curraction = m1;
 		curraction.start();
 	}
 	
