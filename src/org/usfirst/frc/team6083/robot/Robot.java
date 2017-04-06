@@ -147,7 +147,7 @@ public class Robot extends IterativeRobot {
 		DriveBase.mode_selector(0);
 		Joysticks.update_data();
 		DriveBase.drivabase_control();
-		ballAssembly.teleop();
+		ballAssembly.shooter_test();
 	}
 
 	/**

@@ -10,8 +10,11 @@ public class ballAssembly {
 	 
 	 private static boolean active = false;
 	 
+	 private static double shooter_speed;
+	 
 	 public static void init(){
 		 fuel_sender = new VictorSP(fuel_sender_port);
+		 shooter_speed = 0;
 		 
 	 }
 	 
@@ -29,5 +32,16 @@ public class ballAssembly {
 
 		 
 		 
+	 }
+	 
+	 public static void shooter_test(){
+		 if(Joysticks.b&&shooter_speed<0.7){
+			 shooter_speed = shooter_speed + 0.1;
+		 }
+		 else if(!Joysticks.b&&shooter_speed>=0){
+			 shooter_speed = shooter_speed - 0.1;
+		 }
+		 
+		 fuel_sender.set(shooter_speed);
 	 }
 }
