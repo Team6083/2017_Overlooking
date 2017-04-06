@@ -35,10 +35,10 @@ public class ballAssembly {
 	 }
 	 
 	 public static void shooter_test(){
-		 if(Joysticks.b&&shooter_speed<0.7){
+		 if(Joysticks.lb&&shooter_speed<0.7){
 			 shooter_speed = shooter_speed + 0.1;
 		 }
-		 else if(!Joysticks.b&&shooter_speed>=0){
+		 else if(!Joysticks.lb&&shooter_speed>=0){
 			 shooter_speed = shooter_speed - 0.1;
 		 }
 		 
