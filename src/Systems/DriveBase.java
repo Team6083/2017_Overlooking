@@ -22,7 +22,7 @@ public class DriveBase {
      * 2 for arcade mode
      */
     
-    private static double speed_down = 2.5;
+    private static double speed_down = 4;
     
     
     public static void init(){
@@ -72,8 +72,8 @@ public class DriveBase {
     	left_speed=(Joysticks.ly+Joysticks.ly)/speed_down;
     	
     	if(Joysticks.lb){
-    		left_speed=left_speed*2;
-    		right_speed=right_speed*2;
+    		left_speed=left_speed*1.5;
+    		right_speed=right_speed*1.5;
     	}
     	left1.set(left_speed);
     	left2.set(left_speed);
