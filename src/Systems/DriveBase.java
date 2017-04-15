@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase {
 
-    private static VictorSP left1,left2,right1,right2;
+    public static VictorSP left1,left2,right1,right2;
     private static double left_speed,right_speed;
 
     private static final int left1_port = 1;
@@ -54,9 +54,16 @@ public class DriveBase {
     	control_mode = 0;
     	left_speed = -Joysticks.ly/speed_down;
     	right_speed = Joysticks.ry/speed_down;
+<<<<<<< HEAD
 
     	if(Joysticks.lb) left_speed = left_speed*2.5;
     	if(Joysticks.rb) right_speed = right_speed*2.5;//boost
+=======
+    	
+    	if(Joysticks.lb) left_speed = left_speed*2;
+    	if(Joysticks.rb) right_speed = right_speed*2;//boost
+
+>>>>>>> refs/heads/release/AUSC
     	
     	left1.set(left_speed);
     	left2.set(left_speed);
@@ -72,8 +79,8 @@ public class DriveBase {
     	left_speed=(Joysticks.ly+Joysticks.ly)/speed_down;
     	
     	if(Joysticks.lb){
-    		left_speed=left_speed*2;
-    		right_speed=right_speed*2;
+    		left_speed=left_speed*1.5;
+    		right_speed=right_speed*1.5;
     	}
     	left1.set(left_speed);
     	left2.set(left_speed);
@@ -109,6 +116,7 @@ public class DriveBase {
     
     public static void mode_selector(int mode){
     	control_mode = mode;
+    	System.out.println("Current control mode is "+mode);
     }
     
 }
