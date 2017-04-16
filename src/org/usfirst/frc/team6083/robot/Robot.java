@@ -2,8 +2,6 @@ package org.usfirst.frc.team6083.robot;
 
 import Systems.Joysticks;
 import Systems.ballAssembly;
-<<<<<<< HEAD
-=======
 import Systems.encoder;
 
 import org.opencv.core.Mat;
@@ -11,16 +9,12 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
->>>>>>> refs/heads/release/AUSC
 import Systems.DriveBase;
-<<<<<<< HEAD
-=======
 import Systems.autonomous.gyro_control;
 import edu.wpi.cscore.AxisCamera;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.first.wpilibj.CameraServer;
->>>>>>> refs/heads/release/AUSC
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -56,11 +50,8 @@ public class Robot extends IterativeRobot {
 		Joysticks.init();
 		DriveBase.init();
 		ballAssembly.init();
-<<<<<<< HEAD
-=======
 		encoder.init();
 		gyro_control.init();
->>>>>>> refs/heads/release/AUSC
 		SmartDashboard.putString("Status","robotInit finished");
 		/*
 		
@@ -121,11 +112,7 @@ public class Robot extends IterativeRobot {
 		// autoSelected = SmartDashboard.getString("Auto Selector",
 		// defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
-<<<<<<< HEAD
-
-=======
 		SmartDashboard.putNumber("x",0.0001);
->>>>>>> refs/heads/release/AUSC
 	}
 
 	/**
@@ -133,13 +120,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-<<<<<<< HEAD
-		switch (autoSelected) {
-		case customAuto:
-			// Put custom auto code here
-			
-			break;
-=======
 				// Put default auto code here
 		if(i ==0){	
 			System.out.println("auto start");
@@ -147,18 +127,7 @@ public class Robot extends IterativeRobot {
 			DriveBase.left2.set(0.285);
 			DriveBase.right1.set(-0.3);
 			DriveBase.right2.set(-0.3);
->>>>>>> refs/heads/release/AUSC
 			
-<<<<<<< HEAD
-		case redMiddle:
-			
-			break;
-		case defaultAuto:
-		default:
-			// Put default auto code here
-			
-			break;
-=======
 			Timer.delay(7);
 			DriveBase.left1.set(0);
 			DriveBase.left2.set(0);
@@ -166,7 +135,6 @@ public class Robot extends IterativeRobot {
 			DriveBase.right2.set(0);
 			
 			
->>>>>>> refs/heads/release/AUSC
 		}
 		i++;
 	}

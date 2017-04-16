@@ -49,6 +49,4 @@ public class ballAssembly {
 		 fuel_sender.set(shooter_speed);
 		 SmartDashboard.putNumber("shooter_speed", shooter_speed);
 	 }
-
 }
-

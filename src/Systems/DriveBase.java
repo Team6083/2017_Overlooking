@@ -21,7 +21,6 @@ public class DriveBase {
      * 1 for input_control mode
      * 2 for arcade mode
      */
-
     
     private static double speed_down = 4;
     
@@ -54,16 +53,10 @@ public class DriveBase {
     	control_mode = 0;
     	left_speed = -Joysticks.ly/speed_down;
     	right_speed = Joysticks.ry/speed_down;
-<<<<<<< HEAD
-
-    	if(Joysticks.lb) left_speed = left_speed*2.5;
-    	if(Joysticks.rb) right_speed = right_speed*2.5;//boost
-=======
     	
     	if(Joysticks.lb) left_speed = left_speed*2;
     	if(Joysticks.rb) right_speed = right_speed*2;//boost
 
->>>>>>> refs/heads/release/AUSC
     	
     	left1.set(left_speed);
     	left2.set(left_speed);
