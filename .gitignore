@@ -3,4 +3,5 @@
 /dist/
 /.classpath
 /sysProps.xml
+/build.xml
 
