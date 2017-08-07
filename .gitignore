@@ -2,6 +2,5 @@
 /build/
 /dist/
 /.classpath
+/.project
 /sysProps.xml
-/build.xml
-
