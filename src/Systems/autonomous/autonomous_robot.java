@@ -15,7 +15,7 @@ public class autonomous_robot {
 	private static boolean first_run = true;
 	
 	public static void init_robotinit(){
-		gyro_control.gyro_reset();
+		gyro_control.reset();
 	}
 	
 	//init code when robot during autonomous mode

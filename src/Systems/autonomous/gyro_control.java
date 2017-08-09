@@ -17,14 +17,8 @@ public class gyro_control {
     public static boolean isTargetangle = false;
 	
     public static void reset(){
-    	gyro_reset();
-        System.out.println(reset_msg);
-        SmartDashboard.putString("Status", reset_msg);
-    }
-    
-    public static void gyro_reset(){
     	Gyro.reset();
-    	SmartDashboard.putString("Status", "Rotation System reset!!");
+        System.out.println(reset_msg);
     }
     
     public static void init(){
@@ -33,7 +27,6 @@ public class gyro_control {
         SmartDashboard.putNumber("error_range", error_range);
         SmartDashboard.putNumber("max_speed",max_speed);
         System.out.println(startup_msg);
-        SmartDashboard.putString("Status", startup_msg);
     }
     
     public static void rotate(){
