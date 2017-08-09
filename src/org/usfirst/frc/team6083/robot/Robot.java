@@ -10,6 +10,7 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 import Systems.DriveBase;
+import Systems.autonomous.autoMode;
 import Systems.autonomous.gyro_control;
 import edu.wpi.cscore.AxisCamera;
 import edu.wpi.cscore.CvSink;
@@ -30,7 +31,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	final String defaultAuto = "Baseline";
 	final String customAuto = "My Auto";
-	final String redMiddle = "Middle";
 	String autoSelected;
 	SendableChooser chooser = new SendableChooser();
 	Thread visionThread;
@@ -45,7 +45,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		chooser.addDefault("Default Auto", defaultAuto);
 		chooser.addObject("My Auto", customAuto);
-		chooser.addObject("Red Middle", redMiddle);
 		SmartDashboard.putData("Auto choices", chooser);
 		Joysticks.init();
 		DriveBase.init();
@@ -72,6 +71,7 @@ public class Robot extends IterativeRobot {
 		// defaultAuto);
 		System.out.println("Auto selected: " + autoSelected);
 		SmartDashboard.putNumber("x",0.0001);
+		autoMode.init();
 	}
 
 	/**
@@ -79,23 +79,33 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-				// Put default auto code here
-		if(i ==0){	
-			System.out.println("auto start");
-			DriveBase.left1.set(0.285);
-			DriveBase.left2.set(0.285);
-			DriveBase.right1.set(-0.3);
-			DriveBase.right2.set(-0.3);
-			
-			Timer.delay(7);
-			DriveBase.left1.set(0);
-			DriveBase.left2.set(0);
-			DriveBase.right1.set(0);
-			DriveBase.right2.set(0);
-			
-			
+		switch (autoSelected) {
+		case customAuto:
+			// Put custom auto code here
+			if(i ==0){	
+				System.out.println("auto start");
+				DriveBase.left1.set(0.285);
+				DriveBase.left2.set(0.285);
+				DriveBase.right1.set(-0.3);
+				DriveBase.right2.set(-0.3);
+				
+				Timer.delay(7);
+				DriveBase.left1.set(0);
+				DriveBase.left2.set(0);
+				DriveBase.right1.set(0);
+				DriveBase.right2.set(0);
+				
+				
+			}
+			i++;
+			break;
+		case defaultAuto:
+		default:
+			// Put default auto code here
+			autoMode.loop();
+			break;
 		}
-		i++;
+		
 	}
 
 	/**
