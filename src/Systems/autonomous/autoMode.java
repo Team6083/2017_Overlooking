@@ -14,6 +14,7 @@ public class autoMode {
 	
 	public static void init(){
 		gyro_control.init();
+		DriveBase.mode_selector(1);
 	}
 	
 	public static void loop(){
@@ -24,13 +25,16 @@ public class autoMode {
 		else if(status == 1){
 			gyro_control.loop();
 			DriveBase.input(gyro_control.left_speed, gyro_control.right_speed);
+			DriveBase.drivabase_control();
 			SmartDashboard.putBoolean("isTargetangle", gyro_control.isTargetangle);
 			if(gyro_control.isTargetangle) status++;
 		}
 		else if(status == 2){
 			DriveBase.input(0.3, -0.3);
-			Timer.delay(5);
+			DriveBase.drivabase_control();
+			Timer.delay(0.5);
 			status = 0;
 		}
+		SmartDashboard.putNumber("status", status);
 	}
 }
